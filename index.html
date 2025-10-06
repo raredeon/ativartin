@@ -6,7 +6,202 @@
 <title>SocialLink - Connect Your World</title>
 <style>
   /* (Keep your existing styles, no changes needed for styles) */
+  /* Reset some basics */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
 
+body {
+  background: #f9faff;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Header */
+header {
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #4a90e2;
+  cursor: default;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  margin-left: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #4a90e2;
+}
+
+nav a.active {
+  color: #4a90e2;
+  font-weight: 700;
+}
+
+/* Sections */
+section.view {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+section.view.active {
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.btn-primary {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgb(74 144 226 / 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #357ABD;
+  box-shadow: 0 6px 15px rgb(53 122 189 / 0.6);
+}
+
+/* Features */
+.features {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem 1.5rem;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.05);
+  text-align: center;
+  opacity: 0; /* initial for animation */
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.feature-card svg {
+  width: 48px;
+  height: 48px;
+  fill: #4a90e2;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* How It Works */
+#how-it-works {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 25px rgb(0 0 0 / 0.07);
+  margin-bottom: 3rem;
+}
+
+/* CTA */
+.cta {
+  background: #4a90e2;
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgb(74 144 226 / 0.4);
+}
+
+.cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: #222;
+  color: #ccc;
+  margin-top: auto;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    margin-left: 1rem;
+  }
+
+  section.view {
+    margin: 2rem 1rem;
+  }
+}
   /* Additional styles to hide inactive views */
   section.view {
     display: none;
