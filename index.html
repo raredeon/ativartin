@@ -1,19 +1,3 @@
-<!--
-Ativartin single-file responsive website
-Instructions:
-1. Save this file as `Ativartin-website.html`.
-2. Place your logo image (the one you uploaded) in the same folder and name it `1000079288.png` (or update the <img> src below).
-3. Open the HTML file in a browser. Navigation uses History API (client-side routing).
-
-Features included:
-- Responsive layout (desktop + mobile)
-- Top navigation with dynamic routing (History API)
-- Smooth transitions
-- Inline SVG icons (no external resources)
-- Contact form (front-end only)
-- Minimal, modern style to match your logo
--->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,94 +5,274 @@ Features included:
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Ativartin — Surpass Beyond</title>
   <style>
-    :root{
-      --bg:#f6f6f6;
-      --card:#ffffff;
-      --muted:#7a7a7a;
-      --accent:#111111;
+    :root {
+      --bg: #f6f6f6;
+      --card: #ffffff;
+      --muted: #7a7a7a;
+      --accent: #111111;
       --glass: rgba(255,255,255,0.6);
-      --radius:14px;
-      --gap:18px;
-      --max:1100px;
+      --radius: 14px;
+      --gap: 18px;
+      --max: 1100px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,var(--bg),#e9e9e9);color:var(--accent)}
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, var(--bg), #e9e9e9);
+      color: var(--accent);
+    }
 
-    .container{max-width:var(--max);margin:48px auto;padding:28px}
+    .container {
+      max-width: var(--max);
+      margin: 48px auto;
+      padding: 28px;
+    }
 
     /* header */
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:14px}
-    .brand img{width:86px;height:86px;object-fit:contain;border-radius:12px}
-    .brand h1{font-size:20px;margin:0;letter-spacing:2px}
-    .brand p{margin:0;font-size:12px;color:var(--muted);letter-spacing:1px}
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .brand h1 {
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    .brand p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
 
     /* nav */
-    nav{display:flex;align-items:center;gap:8px}
-    .nav-links{display:flex;gap:6px}
-    .nav-link{padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:8px}
-    .nav-link:hover{background:var(--glass)}
-    .nav-link.active{background:linear-gradient(90deg,#0000, rgba(0,0,0,0.05));box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
 
-    /* hamburger for small */
-    .hamburger{display:none;background:none;border:0;padding:10px;border-radius:10px}
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
 
-    /* hero / content */
-    main{margin-top:36px;background:transparent}
-    .card{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 8px 30px rgba(16,16,16,0.06)}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-    .hero h2{margin:0;font-size:36px;line-height:1.02;letter-spacing:1px}
-    .hero p.lead{color:var(--muted);margin-top:12px}
+    .nav-link {
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.25s ease, transform 0.15s ease;
+    }
 
-    .cta{margin-top:18px;display:flex;gap:12px}
-    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn-primary{background:#000;color:white}
-    .btn-ghost{background:transparent;border:1px solid rgba(0,0,0,0.06)}
+    .nav-link:hover, .nav-link:focus-visible {
+      background: var(--glass);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(90deg, #0000, rgba(0, 0, 0, 0.05));
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: 0;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* content */
+    main { margin-top: 36px; }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(16,16,16,0.06);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.02;
+      letter-spacing: 1px;
+    }
+
+    .hero p.lead {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 0;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: white;
+    }
+
+    .btn-primary:hover, .btn-primary:focus-visible {
+      background: #222;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .btn-ghost:hover, .btn-ghost:focus-visible {
+      border-color: rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
 
     /* features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
-    .feature{padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fafafa);min-height:120px}
-    .feature h3{margin:6px 0 0 0}
-    .feature p{margin:8px 0 0 0;color:var(--muted);font-size:14px}
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #fff, #fafafa);
+      min-height: 120px;
+    }
+
+    .feature h3 { margin: 6px 0 0 0; }
+    .feature p { margin: 8px 0 0 0; color: var(--muted); font-size: 14px; }
 
     /* contact */
-    .contact{display:grid;grid-template-columns:1fr 380px;gap:20px}
-    form{display:flex;flex-direction:column;gap:12px}
-    input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(0,0,0,0.08);font-size:14px}
-    .small{font-size:13px;color:var(--muted)}
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+    }
 
-    /* footer */
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .small { font-size: 13px; color: var(--muted); }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
     /* responsive */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .brand img{width:72px;height:72px}
-      .features{grid-template-columns:repeat(2,1fr)}
-      .contact{grid-template-columns:1fr}
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .brand img { width: 72px; height: 72px; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; }
     }
-    @media (max-width:640px){
-      .nav-links{display:none}
-      .hamburger{display:inline-flex}
-      .brand h1{font-size:16px}
-      .brand p{display:none}
-      .features{grid-template-columns:1fr}
-      .container{padding:16px;margin:20px auto}
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: inline-flex; }
+      .brand h1 { font-size: 16px; }
+      .brand p { display: none; }
+      .features { grid-template-columns: 1fr; }
+      .container { padding: 16px; margin: 20px auto; }
     }
 
     /* page transitions */
-    .page{opacity:0;transform:translateY(6px);transition:all .35s cubic-bezier(.2,.9,.25,1)}
-    .page.show{opacity:1;transform:none}
+    .page {
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.35s cubic-bezier(.2,.9,.25,1);
+    }
 
-    /* tiny utilities */
-    .icon{width:18px;height:18px;display:inline-block;vertical-align:middle}
+    .page.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
       <div class="brand" role="banner">
-        <!-- Update path if needed -->
         <img src="logo.png" alt="Ativartin logo" />
         <div>
           <h1>ATIVARTIN</h1>
@@ -118,35 +282,20 @@ Features included:
 
       <nav aria-label="Main navigation">
         <div class="nav-links" id="navLinks">
-          <a href="/" data-route="/" class="nav-link" id="link-home"> <!-- home icon -->
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11.5L12 4l9 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Home
-          </a>
-          <a href="/about" data-route="/about" class="nav-link" id="link-about">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 16h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            About
-          </a>
-          <a href="/services" data-route="/services" class="nav-link" id="link-services">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
-            Services
-          </a>
-          <a href="/contact" data-route="/contact" class="nav-link" id="link-contact">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Contact
-          </a>
+          <a href="/" data-route="/" class="nav-link">Home</a>
+          <a href="/about" data-route="/about" class="nav-link">About</a>
+          <a href="/services" data-route="/services" class="nav-link">Services</a>
+          <a href="/contact" data-route="/contact" class="nav-link">Contact</a>
         </div>
 
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
-          <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
       </nav>
     </header>
 
     <main>
-      <section class="card page" id="app">
-        <!-- Dynamic content injected here -->
-      </section>
-
+      <section class="card page" id="app"></section>
       <footer>
         <div class="small">© <span id="year"></span> Ativartin — Surpass Beyond</div>
       </footer>
@@ -154,7 +303,6 @@ Features included:
   </div>
 
   <script>
-    // Simple client-side router with history API
     const routes = {
       '/': home,
       '/about': about,
@@ -162,22 +310,18 @@ Features included:
       '/contact': contact
     };
 
-    // Utility to set active nav link
     function setActive(path){
       document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
       const el = document.querySelector(`.nav-link[data-route='${path}']`);
       if(el) el.classList.add('active');
     }
 
-    // Render helpers
     function showPage(html){
       const app = document.getElementById('app');
       app.innerHTML = html;
-      // small timeout to trigger css transition
       requestAnimationFrame(()=>setTimeout(()=>app.classList.add('show'),10));
     }
 
-    // Pages
     function home(){
       document.title = 'Ativartin — Home';
       setActive('/');
@@ -186,52 +330,34 @@ Features included:
           <div>
             <h2>Design. Build. Surpass Beyond.</h2>
             <p class="lead">Ativartin crafts minimal, modern digital products and brand experiences. We focus on clarity, performance, and meaningful growth.</p>
-
             <div class="cta">
               <button class="btn btn-primary" onclick="navigate('/services')">Our Services</button>
               <button class="btn btn-ghost" onclick="navigate('/contact')">Get in touch</button>
             </div>
-
             <div class="features" style="margin-top:28px">
-              <div class="feature">
-                <strong>Branding</strong>
-                <h3>Visual identity & strategy</h3>
-                <p>Logo systems, tone of voice, and design language that scales.</p>
-              </div>
-              <div class="feature">
-                <strong>Product</strong>
-                <h3>Web & app design</h3>
-                <p>Product-first UX and pixel-perfect UI that converts.</p>
-              </div>
-              <div class="feature">
-                <strong>Engineering</strong>
-                <h3>Front-end & performance</h3>
-                <p>Fast, accessible, and maintainable web builds.</p>
-              </div>
+              <div class="feature"><strong>Branding</strong><h3>Visual identity & strategy</h3><p>Logo systems and design language that scales.</p></div>
+              <div class="feature"><strong>Product</strong><h3>Web & app design</h3><p>Product-first UX and pixel-perfect UI.</p></div>
+              <div class="feature"><strong>Engineering</strong><h3>Front-end & performance</h3><p>Fast, accessible, maintainable web builds.</p></div>
             </div>
           </div>
-
           <div style="text-align:center">
-            <img src="1000079288.png" alt="Ativartin logo" style="max-width:220px;margin:auto;display:block;opacity:0.96;" />
+            <img src="logo.png" alt="Ativartin logo" style="max-width:220px;margin:auto;display:block;opacity:0.96;" />
             <p class="small" style="margin-top:12px">Minimal identity inspired by the Ativartin mark.</p>
           </div>
-        </div>
-      `;
+        </div>`;
       showPage(html);
     }
 
     function about(){
       document.title = 'Ativartin — About';
       setActive('/about');
-      const html = `
+      showPage(`
         <div class="page-content">
           <h2>About Ativartin</h2>
           <p class="lead">We are a small collective of designers and engineers who believe deliberate simplicity wins. From brand strategy to production-ready front ends, we partner with teams who want to build clean, fast experiences.</p>
-
           <div style="margin-top:18px">
-            <h3>Our approach</h3>
+            <h3>Our Approach</h3>
             <p class="small">We start with problems — not features. Research, rapid prototypes, and iterative delivery keep work focused and measurable.</p>
-
             <h3 style="margin-top:12px">Values</h3>
             <ul class="small">
               <li>Clarity over cleverness</li>
@@ -239,51 +365,44 @@ Features included:
               <li>Design with dignity</li>
             </ul>
           </div>
-        </div>
-      `;
-      showPage(html);
+        </div>`);
     }
 
     function services(){
       document.title = 'Ativartin — Services';
       setActive('/services');
-      const html = `
+      showPage(`
         <div class="page-content">
           <h2>Services</h2>
           <p class="lead">We offer a focused set of services designed to help brands take the next step.</p>
-
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px">
             <div class="feature"><h3>Brand Identity</h3><p class="small">Logos, systems, and brand guidelines.</p></div>
             <div class="feature"><h3>Product Design</h3><p class="small">UX, UI, prototyping, and design systems.</p></div>
-            <div class="feature"><h3>Front-end Engineering</h3><p class="small">Responsive, accessible, and performant front-ends.</p></div>
+            <div class="feature"><h3>Front-end Engineering</h3><p class="small">Responsive, accessible, and performant builds.</p></div>
             <div class="feature"><h3>Consulting</h3><p class="small">Strategy sessions and roadmap planning.</p></div>
           </div>
-        </div>
-      `;
-      showPage(html);
+        </div>`);
     }
 
     function contact(){
       document.title = 'Ativartin — Contact';
       setActive('/contact');
-      const html = `
+      showPage(`
         <div class="page-content contact">
           <div>
             <h2>Contact</h2>
             <p class="lead">Let's talk about your project. Fill the form and we'll get back within 2 business days.</p>
-
             <form id="contactForm" onsubmit="handleContact(event)">
               <input type="text" id="name" placeholder="Your name" required />
               <input type="email" id="email" placeholder="Email" required />
               <input type="text" id="subject" placeholder="Subject" />
               <textarea id="message" rows="5" placeholder="Tell us about your project" required></textarea>
-              <div style="display:flex;gap:10px;align-items:center">
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                 <button class="btn btn-primary" type="submit">Send message</button>
                 <div class="small">Or email us at <strong>hello@ativartin.example</strong></div>
               </div>
             </form>
           </div>
-
           <aside style="padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fafafa);height:100%">
             <h3>Studio</h3>
             <p class="small">Working remotely. Timezone-friendly meetings available.</p>
@@ -292,14 +411,11 @@ Features included:
               <p class="small">Online studio — Book a call to meet.</p>
             </div>
           </aside>
-        </div>
-      `;
-      showPage(html);
+        </div>`);
     }
 
-    // router actions
     function navigate(path){
-      if(location.pathname === path) return; // already there
+      if(location.pathname === path) return;
       history.pushState({}, '', path);
       render();
       window.scrollTo({top:0,behavior:'smooth'});
@@ -307,46 +423,40 @@ Features included:
 
     function render(){
       const path = location.pathname || '/';
-      const page = routes[path] || (()=>{document.title='404 — Ativartin'; setActive(''); showPage('<h2>404</h2><p class="small">Page not found</p>')});
-      // remove show class to allow reanimation
+      const page = routes[path] || (() => { 
+        document.title = '404 — Ativartin'; 
+        setActive(''); 
+        showPage('<h2>404</h2><p class="small">Page not found</p>');
+      });
       const app = document.getElementById('app');
       app.classList.remove('show');
-      setTimeout(()=>page(), 120);
+      setTimeout(() => page(), 120);
     }
 
-    // contact handler (front-end only)
     function handleContact(e){
       e.preventDefault();
       const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-      // For demo: show a success message
       const form = document.getElementById('contactForm');
-      form.innerHTML = `<div style="padding:18px;border-radius:10px;background:#f1fff6;color:#064e2a"><strong>Thanks, ${escapeHtml(name)}!</strong><p class="small">We've received your message. (Demo only — no email sent.)</p></div>`;
+      form.innerHTML = `<div style="padding:18px;border-radius:10px;background:#f1fff6;color:#064e2a">
+        <strong>Thanks, ${escapeHtml(name)}!</strong>
+        <p class="small">We've received your message. (Demo only — no email sent.)</p>
+      </div>`;
     }
 
-    // basic escape
-    function escapeHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+    function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-    // attach link handlers
-    document.addEventListener('click', (e)=>{
+    document.addEventListener('click', e=>{
       const a = e.target.closest('a[data-route]');
-      if(a){e.preventDefault(); const r=a.getAttribute('data-route'); navigate(r);} 
+      if(a){ e.preventDefault(); navigate(a.getAttribute('data-route')); }
     });
 
     window.addEventListener('popstate', render);
 
-    // hamburger menu
+    // improved hamburger
     const hamburger = document.getElementById('hamburger');
-    hamburger.addEventListener('click', ()=>{
-      const nav = document.getElementById('navLinks');
-      const visible = getComputedStyle(nav).display !== 'none';
-      if(visible){ nav.style.display='flex'; nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.right='20px'; nav.style.top='86px'; nav.style.background='white'; nav.style.padding='12px'; nav.style.boxShadow='0 10px 30px rgba(0,0,0,0.08)'; }
-      else { nav.style.display='flex'; }
-    });
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-    // initial state
     document.getElementById('year').textContent = new Date().getFullYear();
     render();
   </script>
